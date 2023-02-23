@@ -6,12 +6,14 @@ public class Homework
         long start, stop, runningTime;
         boolean tooBig = false;
 
-        start = System.nanoTime();
+        
         if (args.length < 1) {
             System.out.println("Not enough arguments!");
             System.exit(-1);
         }
 
+        
+        start = System.nanoTime();
         String str = args[0];
         int n = Integer.parseInt(str);
         System.out.println(n);
