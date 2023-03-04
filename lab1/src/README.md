@@ -23,3 +23,5 @@ Se va obtine o matrice de forma:<br>
  
  La final, variabila stop memoreaza timpul final executiei, iar variabila runningTime calculeaza timpul de executie. Daca flagul tooBig este setat pe true, atunci afisam
  timpul de executie.
+ 
+ <p>Bonus: doar o incercare dupa informatiile de pe paginine de Wikipedia date.
