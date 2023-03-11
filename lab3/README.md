@@ -1,0 +1,2 @@
+COMPULSORY: Prezentat la laborator <br>
+HOMEWORK: Din clasa Person creata in compulsory vom crea alte doua clase, Programmer si Designer, inherited din clasa Person. Programatorul va avea un limbaj de programare si anii de experienta asociati, iar designer-ul va avea un Soft de design asociat, cat si stilul preferat de design. Importanta unui nod in companie este data de numarul de legaturi pe care o persoana le are. Astfel ca, in clasa Network, vom sorta in mod descrescator persoanele din companie in functie de aceasta importanta.
