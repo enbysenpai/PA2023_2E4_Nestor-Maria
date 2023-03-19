@@ -1,0 +1,2 @@
+COMPULSORY: prezentat la laborator <br>
+HOMEWORK: Pe langa clasele Student si Project, am creat clasa Pair in care vom memora perechi de tip student-proiect dupa asignari. Astfel, in clasa Problem, in functie de preferintele fiecarui student, folosind un algoritm greedy de asignare (primul venit, primul servit), vom crea astfel de perechi. In metode assignProject() iteram prin studenti. Daca nu au proiect asociat si exista cel putin un proiect din lista lor de preferinte care sa nu fie asociat, atunci acel proiect va fi asociat studentului in cauza. <br>
