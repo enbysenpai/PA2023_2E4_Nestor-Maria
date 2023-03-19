@@ -8,7 +8,7 @@ HOMEWORK: Din clasa Person creata in compulsory vom crea alte doua clase, Progra
 </ul>
 Relatia este un map ce contine nodul si un string in care avem memorat tipul relatiei in sine. Metoda compareTo() compara doua pesroane dupa numele lor. Metoda toString() returneaza numele persoanei. Metoda getNodeImportance() returneaza marimea map-ului relationships (numarul de legaturi pe care persoana le are in companie). Metoda getNeighbors() returneaza toate legaturile pe care o persoana le are in companie. <br>
 
-Clasa Designer, cat si clasa Programmer au doar getter-ele si settere-ele asociate, acestea mostenind din clasa Person restul metodelor. <br>
+Clasa Designer, cat si clasa Programmer au doar getter-ele si setter-ele asociate, acestea mostenind din clasa Person restul metodelor. <br>
 
 Clasa Company contine date precum:
 <ul>
@@ -20,4 +20,4 @@ Metoda compareTo() compara doua companii dupa nume. Metoda toString() returneaza
 
 Interfata Node are metodele getName(), getId(), getNeighbors(), getNodeImportance() si metoda getWeight() ce returneaza 0.0. <br>
 
-Clasa Network contine o lista de astfel de noduri, noduri ce retin practic informatii despre angajati, companii si legaturile dintre acestia. Metoda toString() returneaza tot network-ul (detalii despre angajati, detalii despre companii, legaturile care exista si intre cine, etc). Aceasta metoda apeleaza o metoda numita printNetwork() ce creaza un string ce contine toate aceste informatii. In cadrul acestei metode vom sorta nodurile in functie de importanta lor. Importanta unui nod in companie este data de numarul de legaturi pe care o persoana le are. Astfel ca, in clasa Network, vom sorta in mod descrescator persoanele din companie in functie de aceasta importanta. Metoda returneaza un string.
+Clasa Network contine o lista de astfel de noduri, noduri ce retin practic informatii despre angajati, companii si legaturile dintre acestia. Metoda toString() returneaza tot network-ul (detalii despre angajati, detalii despre companii, legaturile care exista si intre cine, etc). Aceasta metoda apeleaza o metoda numita printNetwork() ce creaza un string ce contine toate aceste informatii. In cadrul acestei metode vom sorta nodurile in functie de importanta lor. Importanta unui nod in companie este data de numarul de legaturi pe care o persoana le are. Astfel ca, in clasa Network, vom sorta in mod descrescator persoanele din companie in functie de aceasta importanta. 
