@@ -1,0 +1,3 @@
+<#list documents as document>
+    <p>${document}</p>
+</#list>
