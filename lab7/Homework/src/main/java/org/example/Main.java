@@ -12,9 +12,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         List<Robot> robots = new ArrayList<>();
-        Robot robot1 = new Robot("Wall-E", 5);
-        Robot robot2 = new Robot("R2D2", 5);
-        Robot robot3 = new Robot("Optimus Prime", 5);
+        Robot robot1 = new Robot("Wall-E", map);
+        Robot robot2 = new Robot("R2D2", map);
+        Robot robot3 = new Robot("Optimus Prime", map);
 
         robots.add(robot1);
         robots.add(robot2);
@@ -84,7 +84,7 @@ public class Main {
 //        {
 //            try
 //            {
-//                t.join();a
+//                t.join();
 //            }
 //            catch(InterruptedException e)
 //            {

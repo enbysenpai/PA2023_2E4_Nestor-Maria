@@ -19,12 +19,13 @@ public class Cell
         this.tokens=tokens;
     }
 
-    public boolean isVisited() {
+    public synchronized boolean isVisited() {
         return visited;
     }
 
-    public void setVisited(boolean visited) {
-        this.visited = visited;
+    public synchronized void setVisited() {
+        this.visited = true;
+
     }
 
     public List<Token> getTokens()

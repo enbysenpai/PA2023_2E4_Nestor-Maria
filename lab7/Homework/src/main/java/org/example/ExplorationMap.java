@@ -11,13 +11,11 @@ public class ExplorationMap
 
     private Cell[][] matrix;
     private SharedMemory mem;
-    private Lock lock;
 
     public ExplorationMap(int n)
     {
         mem=new SharedMemory(n*n*n);
         matrix=new Cell[n][n];
-        lock=new ReentrantLock();
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<n;j++)
@@ -32,30 +30,41 @@ public class ExplorationMap
         return matrix.length;
     }
 
-    public boolean visit(int row,int col,Robot robot)
+    public synchronized boolean visit(int row,int col,Robot robot)
     {
-        synchronized (matrix[row][col])
+        System.out.println("Cell "+row+" "+col+" is visited "+matrix[row][col].isVisited());
+
+        if(matrix[row][col].isVisited())
+        {
+            System.out.println(robot.getName()+" failed to access the cell ["+row+","+col+"]");
+            return false;
+        }
+        else
+        //synchronized (matrix[row][col])
         {
             Cell cell=matrix[row][col];
+                if(!cell.isVisited())
+                {
+//                    System.out.println("Cell "+row+" "+col+" is visited "+cell.isVisited());
 
-            if(!cell.isVisited())
-            {
-                List<Token> tokens=mem.extractTokens(matrix.length);
+                    List<Token> tokens=mem.extractTokens(matrix.length);
 
-                cell.setTokens(tokens);
-                cell.setVisited(true);
+                    cell.setTokens(tokens);
+                    cell.setVisited();
 
-                System.out.println(robot.getName() + " visited cell [" + row + "," + col + "] and extracted: " + tokens);
-                return true;
-            }
-            else
-            {
+                    System.out.println("Cell "+row+" "+col+" is visited?: "+cell.isVisited()+" "+robot.getName() + " visited cell [" + row + "," + col + "] and extracted: " + tokens);
+                    return true;
+                }
+
                 System.out.println(robot.getName()+" failed to access the cell ["+row+","+col+"]");
-                return false;
-            }
         }
+        return false;
     }
 
+    public synchronized boolean checkMatrixCell(int row,int col)
+    {
+        return matrix[row][col].isVisited();
+    }
 
 
     public void setTokens(int row, int col, List<Token> tokens)
