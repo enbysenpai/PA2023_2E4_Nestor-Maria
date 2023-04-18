@@ -11,10 +11,12 @@ public class ExplorationMap
 
     private Cell[][] matrix;
     private SharedMemory mem;
+    private List<Integer> positions;
 
     public ExplorationMap(int n)
     {
         mem=new SharedMemory(n*n*n);
+        positions=new ArrayList<>();
         matrix=new Cell[n][n];
         for(int i=0;i<n;i++)
         {
@@ -23,11 +25,28 @@ public class ExplorationMap
                 matrix[i][j]=new Cell();
             }
         }
+        for(int i=0;i<n*n;i++)
+            positions.add(i);
+        Collections.shuffle(positions);
     }
 
     public int getSize()
     {
         return matrix.length;
+    }
+
+    public synchronized int getPosition()
+    {
+        return positions.get(0);
+    }
+
+    public int getPositionLength()
+    {
+        return positions.size();
+    }
+    public synchronized void delPosition()
+    {
+        positions.remove(0);
     }
 
     public synchronized boolean visit(int row,int col,Robot robot)

@@ -22,7 +22,7 @@ public class Robot implements Runnable {
         paused = false;
 
         this.map = map;
-        this.mapSize=map.getSize();
+        this.mapSize = map.getSize();
 
         row = (int) (Math.random() * mapSize);
         col = (int) (Math.random() * mapSize);
@@ -80,24 +80,31 @@ public class Robot implements Runnable {
                     e.printStackTrace();
                 }
             }
-            lock.lock();
-            try {
-                Random random = new Random();
-                int newRow = random.nextInt(map.getSize());
-                int newCol = random.nextInt(map.getSize());
+            //lock.lock();
+            //try {
+//                Random random = new Random();
+//                int newRow = random.nextInt(map.getSize());
+//                int newCol = random.nextInt(map.getSize());
 
-                if (map.visit(newRow, newCol, this)) {
-                    this.row = newRow;
-                    this.col = newCol;
-                    List<Token> tokens = mem.extractTokens(map.getSize());
-                    map.setTokens(row, col, tokens);
-                }
+            if (map.getPositionLength() == 0)
+                break;
+
+            int newRow = map.getPosition() / map.getSize();
+            int newCol = map.getPosition() % map.getSize();
+
+            if (map.visit(newRow, newCol, this)) {
+                this.row = newRow;
+                this.col = newCol;
+                List<Token> tokens = mem.extractTokens(map.getSize());
+                map.setTokens(row, col, tokens);
+                map.delPosition();
             }
-            finally
-            {
-                System.out.println("Unlock the lock (lmao again) for "+getName());
-                lock.unlock();
-            }
+//            }
+//            finally
+//            {
+//                System.out.println("Unlock the lock (lmao again) for "+getName());
+//                lock.unlock();
+//            }
 //            lock.lock();
 //            try {
 //                int newRow = row;
