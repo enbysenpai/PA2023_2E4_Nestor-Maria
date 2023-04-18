@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,6 +20,11 @@ public class Main {
         robots.add(robot2);
         robots.add(robot3);
 
+        Timekeeper timekeeper=new Timekeeper(60);
+        Thread timekeeperThread=new Thread(timekeeper);
+        timekeeperThread.setDaemon(true);
+        timekeeperThread.start();
+
         List<Thread> threads = new ArrayList<>();
         robots.forEach(t -> threads.add(new Thread(t)));
         threads.forEach(Thread::start);
@@ -27,7 +33,9 @@ public class Main {
         while (true) {
             System.out.println("Enter a command: ");
             String command = scanner.nextLine();
-            if (command.equals("exit")) {
+            if (command.equals("stop")) {
+                for (int i = 0; i < robots.size(); i++)
+                    robots.get(i).stop();
                 System.exit(0);
             } else if (command.equals("pause")) {
                 for (int i = 0; i < robots.size(); i++)

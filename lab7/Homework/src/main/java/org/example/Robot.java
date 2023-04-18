@@ -11,6 +11,7 @@ public class Robot implements Runnable {
     private int row, col;
     private SharedMemory mem;
     private boolean running, paused;
+    private int direction,stepsToMove,stepsMoved,moveCounter;
 
     public Robot(String name, int mapSize) {
         this.name = name;
@@ -22,6 +23,11 @@ public class Robot implements Runnable {
 
         map = new ExplorationMap(mapSize);
         mem = new SharedMemory(mapSize * mapSize * mapSize);
+
+        direction=0;//East
+        stepsToMove=1;
+        stepsMoved=0;
+        moveCounter=0;
     }
 
     public void start() {
@@ -64,16 +70,18 @@ public class Robot implements Runnable {
 
     public void run() {
         while (running) {
-            while (paused)
+            while (paused) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
+            }
             Random random = new Random();
             int newRow = random.nextInt(map.getSize());
             int newCol = random.nextInt(map.getSize());
+
+
 
             if (map.visit(newRow, newCol, this)) {
                 this.row = newRow;
@@ -88,7 +96,7 @@ public class Robot implements Runnable {
             }
 
         }
-        System.out.println("One thread might have bees stopped");
+        System.out.println("One thread might have been stopped");
     }
 
     @Override
