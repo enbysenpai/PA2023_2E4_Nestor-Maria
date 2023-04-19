@@ -36,7 +36,20 @@ public class Main {
             if (command.equals("stop")) {
                 for (int i = 0; i < robots.size(); i++)
                     robots.get(i).stop();
-                System.exit(0);
+
+                threads.forEach(t ->
+                {
+                    try
+                    {
+                        t.join();
+                    }
+                    catch(InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
+                });
+
+                //System.exit(0);
             } else if (command.equals("pause")) {
                 for (int i = 0; i < robots.size(); i++)
                     robots.get(i).pause(0);
@@ -80,17 +93,7 @@ public class Main {
             }
         }
 
-        //        threads.forEach(t ->
-//        {
-//            try
-//            {
-//                t.join();
-//            }
-//            catch(InterruptedException e)
-//            {
-//                e.printStackTrace();
-//            }
-//        });
+
 
 
     }
