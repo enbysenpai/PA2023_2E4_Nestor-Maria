@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Timekeeper implements Runnable
 {
-    private long timeLimitMillis;
+    private final long timeLimitMillis;
 
     public Timekeeper(long timeLimitMillis)
     {

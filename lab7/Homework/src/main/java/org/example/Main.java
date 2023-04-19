@@ -1,6 +1,5 @@
 package org.example;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,8 +19,8 @@ public class Main {
         robots.add(robot2);
         robots.add(robot3);
 
-        Timekeeper timekeeper=new Timekeeper(60);
-        Thread timekeeperThread=new Thread(timekeeper);
+        Timekeeper timekeeper = new Timekeeper(60);
+        Thread timekeeperThread = new Thread(timekeeper);
         timekeeperThread.setDaemon(true);
         timekeeperThread.start();
 
@@ -36,20 +35,13 @@ public class Main {
             if (command.equals("stop")) {
                 for (int i = 0; i < robots.size(); i++)
                     robots.get(i).stop();
-
-                threads.forEach(t ->
-                {
-                    try
-                    {
+                threads.forEach(t -> {
+                    try {
                         t.join();
-                    }
-                    catch(InterruptedException e)
-                    {
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 });
-
-                //System.exit(0);
             } else if (command.equals("pause")) {
                 for (int i = 0; i < robots.size(); i++)
                     robots.get(i).pause(0);
@@ -58,19 +50,15 @@ public class Main {
                     robots.get(i).start();
             } else if (command.startsWith("pause")) {
                 //pause a specific thread
-                String[] parts=command.split(" ");
-                //String threadName = command.split(" ")[1];
-
-                if(parts.length==2) {
+                String[] parts = command.split(" ");
+                if (parts.length == 2) {
                     for (Robot robot : robots) {
                         if (robot.getName().equals(parts[1])) {
                             robot.pause(0);
                             break;
                         }
                     }
-                }
-                else if(parts.length==3)
-                {
+                } else if (parts.length == 3) {
                     for (Robot robot : robots) {
                         if (robot.getName().equals(parts[1])) {
                             robot.pause(Integer.parseInt(parts[2]));
@@ -92,9 +80,5 @@ public class Main {
                 System.out.println("UNKNOWN COMMAND");
             }
         }
-
-
-
-
     }
 }

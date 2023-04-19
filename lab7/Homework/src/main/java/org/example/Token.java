@@ -2,15 +2,11 @@ package org.example;
 
 public class Token
 {
-    private int number;
+    private final int number;
 
     public Token(int number)
     {
         this.number=number;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     @Override

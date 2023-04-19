@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SharedMemory
 {
-    private List<Token> tokens;
+    private final List<Token> tokens;
 
     public SharedMemory(int n)
     {
