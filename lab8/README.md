@@ -40,7 +40,7 @@ La final, trecem la urmatoarea linie din fisier.
 Album, Artist, Genre: Tot ce s-a schimbat de la Compulsory este faptul ca am folosit dependenta lombok.
 </li>
 <li>
-GenresFaculty, ArtistFaculty, AlbumFaculty: Diferit de Compulsory este faptul ca metoda create() este de tip boolean - daca un obiect nu exista deja in baza de date, va fi adaugat si va returna true. Altfel, va returna false si nu va fi adaugat. Acest lucru ne ajuta in clasa DataReader pentru a vedea in ce stadiu se gasesc obiectele si pentru adaugarea lor eficienta in baza de date. De asemenea, am renuntat in a returna liste acolo unde nu era necesar.
+GenresFaculty, ArtistFaculty, AlbumFaculty: Diferit de Compulsory este faptul ca metoda create() este de tip boolean - daca un obiect nu exista deja in baza de date, va fi adaugat si va returna true. Altfel, va returna false si nu va fi adaugat. Acest lucru ne ajuta in clasa DataReader pentru a vedea in ce stadiu se gasesc obiectele si pentru adaugarea lor eficienta in baza de date. De asemenea, am renuntat in a returna liste acolo unde nu era necesar si am creat metode de afisare a tuturor inregistrarilor din tabelele corespondente (prin metoda showAll()).
 </li>
 <li>
 ArtistAlbumFaculty: Nu exista o tabela corespondenta in baza de date. Aici se gasesc doua metode:
@@ -74,3 +74,4 @@ getGenresArtistsByName(): Se da numele unui gen muzical. Metoda returneaza toti 
 Main: Aici se creaza conexiunea la baza de date, se face conexiunea la fisier si se invoca metoda readFromFile() din clasa DataReader. La final, inchidem conexiunea.
 </li>
 </ol>
+BONUS: Am creat doua tabele noi in baza de date, "playlists" si "playlist_albums", fara inregistrari. In Java am creat un model pentru obiecte de tip Playlist. In PlaylistFaculty putem crea un nou playlist (un obiect Playlist avand atributele id, name si creationTimestamp), putem cauta un playlist dupa oricare dintre atributele sale si putem afisa toate inregistrarile din tabelul "playlists". In clasa PlaylistAlbumsFaculty vom crea legaturile dintre un playlist si un album prin id-urile corespondente acestora. Astfel ca, in aceasta clasa, putem crea o astfel de relatie, putem cauta toate albumele dintr-un playlist pe baza id-ului playlist-ului respectiv sau putem cauta toate playlist-urile in care un album se gaseste (pe baza albumId-ului).
