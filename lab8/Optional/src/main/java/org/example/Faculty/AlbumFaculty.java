@@ -124,4 +124,27 @@ public class AlbumFaculty {
         }
         return albums;
     }
+
+    public static List<Album> showAll() throws SQLException
+    {
+        Connection con=DB.getConnection();
+        List<Album>albums=new ArrayList<>();
+        try(Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT * FROM albums"))
+        {
+            while(rs.next()) {
+                int id = rs.getInt("id");
+                int releaseYear = rs.getInt("release_year");
+                String title = rs.getString("title");
+                int artistId = rs.getInt("id_artist");
+                Album album = new Album();
+                album.setId(id);
+                album.setReleaseYear(releaseYear);
+                album.setTitle(title);
+                album.setArtistId(artistId);
+                albums.add(album);
+            }
+        }
+        return albums;
+    }
 }

@@ -21,7 +21,6 @@ import java.util.List;
 
 public class DataReader {
     private static String path = "src/main/java/org/example/albumlist.csv";
-    private static int maxNumber = 100;
     private static CSVReader reader;
 
 

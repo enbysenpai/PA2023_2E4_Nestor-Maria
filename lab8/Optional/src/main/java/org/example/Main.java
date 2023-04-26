@@ -15,8 +15,10 @@ public class Main {
         try {
             Connection connection = DB.getConnection();
 
-            DataReader.readFile(connection);
-            DataReader.readFromFile();
+            //DataReader.readFile(connection);
+            //DataReader.readFromFile();
+
+            System.out.println(AlbumFaculty.showAll());
 
             connection.close();
         } catch (SQLException e) {

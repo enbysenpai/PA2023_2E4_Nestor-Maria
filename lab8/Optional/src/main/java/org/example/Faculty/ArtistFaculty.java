@@ -4,6 +4,8 @@ import org.example.DB;
 import org.example.Model.Artist;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArtistFaculty {
     public static boolean create(Artist artist) throws SQLException {
@@ -68,6 +70,25 @@ public class ArtistFaculty {
             }
         }
         return null;
+    }
+
+    public static List<Artist> showAll() throws SQLException
+    {
+        Connection con=DB.getConnection();
+        List<Artist>artists=new ArrayList<>();
+        try(Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT * FROM artists"))
+        {
+            while(rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                Artist artist = new Artist();
+                artist.setId(id);
+                artist.setName(name);
+                artists.add(artist);
+            }
+        }
+        return artists;
     }
 }
 

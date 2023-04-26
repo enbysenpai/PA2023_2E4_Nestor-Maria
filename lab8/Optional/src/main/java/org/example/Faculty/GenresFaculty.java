@@ -1,9 +1,12 @@
 package org.example.Faculty;
 
 import org.example.DB;
+import org.example.Model.Album;
 import org.example.Model.Genre;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenresFaculty {
     public static boolean create(Genre genre) throws SQLException {
@@ -68,6 +71,25 @@ public class GenresFaculty {
             }
         }
         return null;
+    }
+
+    public static List<Genre> showAll() throws SQLException
+    {
+        Connection con=DB.getConnection();
+        List<Genre>genres=new ArrayList<>();
+        try(Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT * FROM genres"))
+        {
+            while(rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                Genre genre = new Genre();
+                genre.setId(id);
+                genre.setName(name);
+                genres.add(genre);
+            }
+        }
+        return genres;
     }
 }
 
