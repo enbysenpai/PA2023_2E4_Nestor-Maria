@@ -74,4 +74,36 @@ getGenresArtistsByName(): Se da numele unui gen muzical. Metoda returneaza toti 
 Main: Aici se creaza conexiunea la baza de date, se face conexiunea la fisier si se invoca metoda readFromFile() din clasa DataReader. La final, inchidem conexiunea.
 </li>
 </ol>
-BONUS: Am creat doua tabele noi in baza de date, "playlists" si "playlist_albums", fara inregistrari. In Java am creat un model pentru obiecte de tip Playlist. In PlaylistFaculty putem crea un nou playlist (un obiect Playlist avand atributele id, name si creationTimestamp), putem cauta un playlist dupa oricare dintre atributele sale si putem afisa toate inregistrarile din tabelul "playlists". In clasa PlaylistAlbumsFaculty vom crea legaturile dintre un playlist si un album prin id-urile corespondente acestora. Astfel ca, in aceasta clasa, putem crea o astfel de relatie, putem cauta toate albumele dintr-un playlist pe baza id-ului playlist-ului respectiv sau putem cauta toate playlist-urile in care un album se gaseste (pe baza albumId-ului).
+BONUS: Am creat doua tabele noi in baza de date, "playlists" si "playlist_albums", fara inregistrari. In Java am creat un model pentru obiecte de tip Playlist. In PlaylistFaculty putem crea un nou playlist (un obiect Playlist avand atributele id, name si creationTimestamp), putem cauta un playlist dupa oricare dintre atributele sale si putem afisa toate inregistrarile din tabelul "playlists". In clasa PlaylistAlbumsFaculty vom crea legaturile dintre un playlist si un album prin id-urile corespondente acestora. Astfel ca, in aceasta clasa, putem crea o astfel de relatie, putem cauta toate albumele dintr-un playlist pe baza id-ului playlist-ului respectiv sau putem cauta toate playlist-urile in care un album se gaseste (pe baza albumId-ului).<br>
+In clasa PlaylistFaculty am creat logica unui playlist maximal:
+<ul>
+<li>
+Preluam, intr-o lista de albume, toate albumele existente in baza de date.
+</li>
+<li>
+Sortam albumele dupa data lansarii (eu am ales in ordine descrescatoare; nu conteaza ordinea).
+</li>
+<li>
+In cele trei HashSet-uri vom avea grija de anii de lansare, id-ul artistilor si id-ul genurilor muzicale deja folosite in crearea listei de albume maximalPlaylists. 
+</li>
+<li>
+Iteram peste toate albumele din baza de date si verificam:
+<ul>
+<li>
+Daca se gaseste anul lansarii albumului curent in HashSet-ul corespunzator, trecem la urmatorul album.
+</li>
+<li>
+Daca se gaseste id-ul artistului ce a creat albumul curent in HashSet-ul corespunzator, trecem la urmatorul album.
+</li>
+<li>
+Daca se gaseste vreun gen muzical deja existent in albumul curent in HashSet-ul corespunzator, trecem la urmatorul album.
+</li>
+</ul>
+<li>
+Daca algoritmul trece de pasii anteriori, albumul este adaugat listei maximalPlaylists, iar cele trei HashSet-uri sunt actualizate cu valorile corespunzatoare albumului nou adaugat (releaseYear, artistId, si toate genreId-urile).
+</li>
+</li>
+<li>
+Dupa ce terminam iteratia, cream un playlist nou, avand numele "Maximal Playlist", apoi adaugam toate legaturile dintre playlist-ul nou creat si albumele adaugate.
+</li>
+</ul>
