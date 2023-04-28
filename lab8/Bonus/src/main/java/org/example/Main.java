@@ -19,11 +19,15 @@ public class Main {
 //            DataReader.readFile(connection);
 //            DataReader.readFromFile();
 
-            Playlist playlist=new Playlist();
-            playlist.setName("Study Playlist");
-            PlaylistsFaculty.create(playlist);
+//            Playlist playlist=new Playlist();
+//            playlist.setName("Study Playlist");
+//            PlaylistsFaculty.create(playlist);
+//
+//            PlaylistAlbumsFaculty.create(1,AlbumFaculty.findByTitle("Bleach").getId());
 
-            PlaylistAlbumsFaculty.create(1,AlbumFaculty.findByTitle("Bleach").getId());
+            PlaylistsFaculty.generateMaximalPlaylists();
+
+            System.out.println(PlaylistsFaculty.findByTitle("Maximal Playlist"));
 
             connection.close();
         } catch (SQLException e) {
