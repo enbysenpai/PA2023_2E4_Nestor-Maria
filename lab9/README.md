@@ -2,7 +2,7 @@ COMPULSORY: <em>to be presented...</em><br>
 HOMEWORK: Tema este structurata in 3 package-uri + 3 clase separate.
 <ol>
   <li>
-    Model Package
+    Model Package:
   </li>
   <ul>
     <li>
@@ -12,10 +12,10 @@ HOMEWORK: Tema este structurata in 3 package-uri + 3 clase separate.
       Clasa Genre: Aceasta clasa este creata la fel ca cea mentionata mai sus. Reprezinta tabela "genres" din baza de date.
     </li>
     <li>
-      Clasa Albums: Reprezinta tabela "albums" din baza de date. Are 3 NamedQueries: primul cauta albumele dupa numele acestora, al doilea dupa anul lansarii, iar al treilea dupa id-ul artistului. Tabela are 4 coloane: id, release_year, titile, id_artist. Clasa contine gettere, settere, cat si metoda toString.
+      Clasa Albums: Reprezinta tabela "albums" din baza de date. Are 3 NamedQueries: primul cauta albumele dupa numele acestora, al doilea dupa anul lansarii, iar al treilea dupa id-ul artistului. Tabela are 4 coloane: id, release_year, title, id_artist. Clasa contine gettere, settere, cat si metoda toString.
     </li>
     <li>
-      Clasa CompositeKey: Este o clasa ce contine doar doua atribute, album_id si genre_id. Este o clasa notata cu tag-ul @Embeddable, ceea ce inseamna ca este o clasa non-entitate care este utilizată pentru a reprezenta un tip de valoare încorporat într-o entitate. Aceasta clasa va fi folosita in cadrul clasei AlbumGenre deoarece aceasta contine o cheie primara compusa. Astfel ca, folosindu-ne de aceasta clasa, putem crea aceasta cheie compusa formata din ambele coloane ale tabelei albumGenres. Aceasta are gettere, settere si metoda toString.
+      Clasa CompositeKey: Este o clasa ce contine doar doua atribute, album_id si genre_id. Este o clasa notata cu tag-ul @Embeddable, ceea ce inseamna ca este o clasa non-entitate care este utilizata pentru a reprezenta un tip de valoare incorporat intr-o entitate. Aceasta clasa va fi folosita in cadrul clasei AlbumGenre deoarece aceasta contine o cheie primara compusa. Astfel ca, folosindu-ne de aceasta clasa, putem crea aceasta cheie compusa formata din ambele coloane ale tabelei albumGenres. Aceasta are gettere, settere si metoda toString.
     </li>
     <li>
       Clasa AlbumGenre: contine un NamedQuery ce afiseaza toate relatiile album-genre, ordonate dupa id-ul artistului. Contine un obiect de tip CompositeKey. Contine metoda toString.
@@ -30,7 +30,7 @@ HOMEWORK: Tema este structurata in 3 package-uri + 3 clase separate.
     </li>
     <li>
       Clasa ArtistRepository: In constructor apelam constructorul din clasa abstacta. Metoda save salveaza artistul in baza de date. Daca artistul se gaseste deja in baza de date, afisam eroare, iar artist primeste valoarea null. Daca query-ul nu a gasit niciun raspuns, la valoarea max(id)+1 adaugam noul artist. In final, afisam valoarea lui artist. Metoda deleteById sterge artistul DOAR DACA id-ul se gaseste in baza de date (in caz contrar, se afiseaza eroare). Metoda findById cauta un artist in functie de id-ul sau. Daca id-ul nu se gaseste in baza de date, afisam eroare. Metoda findAll returneaza toate inregistrarile din tabela artists. Metoda update actualizeaza campurile unui record specific DOAR DACA se gaseste in baza de date deja. Altfel, afisam mesajul cum ca nu exista. <br>
-      Pe langa metodele Override din clasa abstracta, am mai adaugat alte doua metode, findByNameSpecific si findByNamePattern ce functioneaza asemanator: primesc un nume si cauta in baza de date inregistrarile ce contin acest nume: prima clasa returneaza un obiect de tip artist ce contine EXACT acel nume, a doua metoda returneaza o liste de artisti ce contin un nume String-ul oferit.
+      Pe langa metodele Override din clasa abstracta, am mai adaugat alte doua metode, findByNameSpecific si findByNamePattern ce functioneaza asemanator: primesc un nume si cauta in baza de date inregistrarile ce contin acest nume: prima clasa returneaza un obiect de tip artist ce contine EXACT acel nume, a doua metoda returneaza o lista de artisti ce contin ca nume String-ul oferit.
     </li>
     <li>
       Clasa GenreRepository: Este creata in acelasi mod ca mai sus.
@@ -40,11 +40,11 @@ HOMEWORK: Tema este structurata in 3 package-uri + 3 clase separate.
     </li>
   </ul>
   <li>
-    Manager Package
+    Manager Package:
   </li>
   <ul>
     <li>
-      Clasa EMFManager: Aceasta clasa se ocupa de crearea unul obiect EntityManagerFactory si de inchiderea acestuia.
+      Clasa EMFManager: Aceasta clasa se ocupa de crearea unui obiect EntityManagerFactory si de inchiderea acestuia.
     </li>
   </ul>
   <li>
