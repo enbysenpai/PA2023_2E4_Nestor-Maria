@@ -6,19 +6,13 @@ HOMEWORK: Tema este structurata in 3 package-uri + 3 clase separate.
   </li>
   <ul>
     <li>
-      Clasa Artist: Reprezinta tabela "artists" din baza de date. Are un NamedQuery ce cauta artistii dupa numele lor. Tabela contine doua coloane, id si name. Clasa contine constructorul default, gettere, settere si metoda toString.
+      Clasa Artist: Reprezinta tabela "artists" din baza de date. Are un NamedQuery ce cauta artistii dupa numele lor. Tabela contine doua coloane, id si name. Clasa contine constructorul default, gettere, settere si metoda toString. Exista relatie OneToMany cu albumele.
     </li>
     <li>
-      Clasa Genre: Aceasta clasa este creata la fel ca cea mentionata mai sus. Reprezinta tabela "genres" din baza de date.
+      Clasa Genre: Aceasta clasa este creata la fel ca cea mentionata mai sus. Reprezinta tabela "genres" din baza de date. Exista relatie ManyToMany cu albumele.
     </li>
     <li>
-      Clasa Albums: Reprezinta tabela "albums" din baza de date. Are 3 NamedQueries: primul cauta albumele dupa numele acestora, al doilea dupa anul lansarii, iar al treilea dupa id-ul artistului. Tabela are 4 coloane: id, release_year, title, id_artist. Clasa contine gettere, settere, cat si metoda toString.
-    </li>
-    <li>
-      Clasa CompositeKey: Este o clasa ce contine doar doua atribute, album_id si genre_id. Este o clasa notata cu tag-ul @Embeddable, ceea ce inseamna ca este o clasa non-entitate care este utilizata pentru a reprezenta un tip de valoare incorporat intr-o entitate. Aceasta clasa va fi folosita in cadrul clasei AlbumGenre deoarece aceasta contine o cheie primara compusa. Astfel ca, folosindu-ne de aceasta clasa, putem crea aceasta cheie compusa formata din ambele coloane ale tabelei albumGenres. Aceasta are gettere, settere si metoda toString.
-    </li>
-    <li>
-      Clasa AlbumGenre: contine un NamedQuery ce afiseaza toate relatiile album-genre, ordonate dupa id-ul artistului. Contine un obiect de tip CompositeKey. Contine metoda toString.
+      Clasa Albums: Reprezinta tabela "albums" din baza de date. Are 3 NamedQueries: primul cauta albumele dupa numele acestora, al doilea dupa anul lansarii, iar al treilea dupa id-ul artistului. Tabela are 4 coloane: id, release_year, title, id_artist. Clasa contine gettere, settere, cat si metoda toString. Avem relatie ManyToMany to genurile muzicale si ManyToOne cu artistii.
     </li>
   </ul>
   <li>
