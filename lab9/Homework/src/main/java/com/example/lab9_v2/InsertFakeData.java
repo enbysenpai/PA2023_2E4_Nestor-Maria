@@ -1,14 +1,11 @@
 package com.example.lab9_v2;
 
-import com.example.lab9_v2.Model.Album;
-import com.example.lab9_v2.Model.Artist;
-import com.example.lab9_v2.Repository.AlbumRepository;
-import com.example.lab9_v2.Repository.ArtistRepository;
+import com.example.lab9_v2.model.Album;
+import com.example.lab9_v2.model.Artist;
+import com.example.lab9_v2.repository.AlbumRepository;
+import com.example.lab9_v2.repository.ArtistRepository;
 import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManagerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class InsertFakeData
 {
@@ -37,10 +34,10 @@ public class InsertFakeData
         {
             String title=faker.book().title();
             int releaseYear=faker.number().numberBetween(1920,2023);
-            int artistId=faker.number().numberBetween(0,792);
+//            int artistId=faker.number().numberBetween(0,792);
             newAlbum.setTitle(title);
             newAlbum.setReleaseYear(releaseYear);
-            newAlbum.setArtistId(artistId);
+//            newAlbum.setArtistId(artistId);
             albumRepository.save(newAlbum);
         }
 

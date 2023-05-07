@@ -1,20 +1,8 @@
 package com.example.lab9_v2;
 
 
-import com.example.lab9_v2.Manager.EMFManager;
-import com.example.lab9_v2.Model.Album;
-import com.example.lab9_v2.Model.Artist;
-import com.example.lab9_v2.Model.Genre;
-import com.example.lab9_v2.Repository.AlbumRepository;
-import com.example.lab9_v2.Repository.ArtistRepository;
-import com.example.lab9_v2.Repository.GenreRepository;
-import jakarta.persistence.EntityManager;
+import com.example.lab9_v2.manager.EMFManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
-import org.hibernate.sql.ast.spi.SqlAliasBaseManager;
-
-import java.util.List;
 
 public class Test
 {
