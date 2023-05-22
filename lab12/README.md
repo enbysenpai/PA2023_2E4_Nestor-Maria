@@ -1,2 +1,2 @@
-COMPULSORY: <em>prezentat la laborator...</em>
+COMPULSORY: <em>prezentat la laborator...</em><br>
 HOMEWORK: 
